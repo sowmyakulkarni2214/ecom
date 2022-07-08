@@ -1,0 +1,22 @@
+{%extends 'ecomapp/index.html'%}
+{%load static%}
+{%block content%}
+<div class="row">
+    {%for product in products%}
+    <div class="col-lg-4">
+        <div class="box-element">
+            <div class="thumbnail">
+                <div class="image">
+                <img src="{{product.image.url}}">
+                </div>
+            </div>
+            <h6><strong>{{product.name}}</strong></h6>
+            <hr>
+            <button class="btn btn-outline-secondary">Add to Cart</button>
+            <a href="#" class="btn btn-outline-success">View</a>
+            <h4 style="display:inline-block;float:right"><strong>Rs.{{product.price|floatformat:2}}</strong></h4>
+        </div>
+    </div>
+{%endfor%}
+</div>
+{%endblock%}

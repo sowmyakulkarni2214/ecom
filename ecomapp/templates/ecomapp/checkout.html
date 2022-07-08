@@ -1,0 +1,65 @@
+{%extends 'ecomapp/index.html'%}
+{%load static%}
+{%block content%}
+
+<div class="row">
+    <div class="col-lg-6 padding-0">
+        <div class="box-element">
+            <form id="form-id">
+                <div id="user-info">
+                    <div class="form-field">
+                        <input class="form-control" type="text" placeholder="Name...">
+                    </div>
+                    <div class="form-field">
+                        <input class="form-control"type="text" placeholder="Email...">
+                    </div>
+                </div>
+            <hr>
+            <h4>Shopping Information</h4>
+            <hr>
+            <div id="shopping-info">
+                <div class="form-field">
+                     <input class="form-control"type="text" placeholder="Address...">
+                </div>
+                <div class="form-field">
+                    <input class="form-control"type="text" placeholder="City...">
+                </div>
+                <div class="form-field">
+                    <input class="form-control"type="text" placeholder="State...">
+                </div>
+                <div class="form-field">
+                    <input class="form-control"type="text" placeholder="Zipcode...">
+                </div>
+             </div>
+            <hr>
+            <input id="form-button" type="Submit" class="btn btn-success btn-block" value="Continue">
+            </form>
+    </div>
+        <br>
+        <div class="box-element hidden" id="payment-Info">
+            <small>PayPal</small>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="box-element">
+            <a type="submit" class="btn btn-outline-dark"  href="{%url 'cart'%}">Back to Cart</a>
+            <hr>
+        <h4>Order Summary</h4>
+        <hr>
+            {%for item in items%}
+        <div class="cart-row">
+                <div style="flex:2"><img class="cart-image" src="{{item.product.imageURL}}"></div>
+                <div style="flex:1">{{item.product.name}}</div>
+                <div style="flex:1">Rs.{{item.product.price}}</div>
+                <div style="flex:1">x{{item.quantity}}</div>
+            </div>
+            {%endfor%}
+            <hr>
+        <h4>Items: {{order.get_cart_items}}</h4>
+        <h4>Total : {{order.get_cart_total}}</h4>
+
+        </div>
+
+    </div>
+</div>
+{%endblock%}
